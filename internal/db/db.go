@@ -9,7 +9,7 @@ import (
 
 const (
 	URI = "mongodb://api:123456@mongo:27017/api"
-	Database = "products"
+	Database = "api"
 ) 
 
 type Collection string

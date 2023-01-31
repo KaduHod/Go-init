@@ -13,7 +13,7 @@ type Product struct {
 	ID primitive.ObjectID `json:"_id" bson:"_id"`
 	CreatedAt time.Time `json:"CreatedAt" bson:"created_at"`
 	UpdatedAt time.Time `json:"UpdatedAt" bson:"updated_at"`
-	Price  float64 `json:"Price" bson:Price"`
+	Price float32 `json:"Price" bson:Price"`
 	title string `json:"title" bson:title"`
 }
 
@@ -28,16 +28,17 @@ func CreateProduct(c *fiber.Ctx) error {
         title: "Pen",
     }
 
-	// if err := c.BodyParser(&product); err != nil { 
-		// panic(err) 
-	// }
+	if err := c.BodyParser(&product); err != nil { 
+		panic(err) 
+	}
+
+	fmt.Println(product)
 
 	client, err := db.GetMongoClient() 
 
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Aqui.")
 
 	collection := client.Database(db.Database).Collection(string(db.ProductsCollection))
 

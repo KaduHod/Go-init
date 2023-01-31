@@ -60,11 +60,24 @@ $ go get -u github.com/gofiber/fiber/v2
 ```
 $ docker compose up --build
 ```
+## Setup
 
+## set environment variables
 
-# Dependencies API
+```
+$ cd /usr/local
+$ export PATH=$PATH:/usr/local/go/bin
+```
+## Dependencies API
 
 ```bash	
+$ cd /usr/src/app
 $ go get github.com/gofiber/fiber/v2
 $ go get go.mongodb.org/mongo-driver/mongo
+```
+
+## Run web server 
+
+```
+$ go run /usr/src/app main.go
 ```

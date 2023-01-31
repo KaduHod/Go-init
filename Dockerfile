@@ -12,10 +12,6 @@ RUN tar -xzf go.tar.gz
 
 RUN mv go /usr/local
 
-RUN cd /usr/local
-
-RUN export PATH=$PATH:/usr/local/go/bin
-
 COPY . .
 
 EXPOSE 8080
