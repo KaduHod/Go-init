@@ -60,3 +60,11 @@ $ go get -u github.com/gofiber/fiber/v2
 ```
 $ docker compose up --build
 ```
+
+
+# Dependencies API
+
+```bash	
+$ go get github.com/gofiber/fiber/v2
+$ go get go.mongodb.org/mongo-driver/mongo
+```

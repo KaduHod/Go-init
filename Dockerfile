@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 RUN apt-get update 
 
-RUN apt-get install ca-certificates
+RUN apt-get install ca-certificates -y
 
 COPY ./go.tar.gz /usr/src/app/
 
@@ -16,6 +16,7 @@ RUN cd /usr/local
 
 RUN export PATH=$PATH:/usr/local/go/bin
 
-RUN cd /usr/src/app
-
 COPY . .
+
+EXPOSE 8080
+

@@ -6,3 +6,19 @@ services:
     volumes: 
       - .:/usr/src/app
     tty: true
+    ports:
+      - 8080:8080
+    networks:
+     - api
+
+  mongo: 
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+     - api
+
+networks:
+  api:
+    driver: bridge  
