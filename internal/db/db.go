@@ -1,15 +1,14 @@
-package mongo
+package db
 
 import (
 	"context"
-	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
+	"sync"
 )
 
 const (
-	URI = "mongodb://@mongo:27017/"
+	URI = "mongodb://api:123456@mongo:27017/api"
 	Database = "products"
 ) 
 
@@ -26,8 +25,7 @@ var mongoOnce sync.Once
 var clientInstanceError error
 
 func GetMongoClient() (*mongo.Client, error) {
-
-    func initClient() {
+	mongoOnce.Do(func() {
 		clientOptions := options.Client().ApplyURI(URI)
 
 		client, err := mongo.Connect(context.TODO(), clientOptions)
@@ -37,9 +35,7 @@ func GetMongoClient() (*mongo.Client, error) {
         clientInstance = client
 
 		clientInstanceError = err 
-	}
-
-	mongoOnce.Do(initClient)
+	})
 
 	return clientInstance, clientInstanceError
 }

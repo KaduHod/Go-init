@@ -3,8 +3,8 @@ package main
 import (
     "github.com/gofiber/fiber/v2"
 	"os"
-	"fmt"
 	"log"
+	"api/internal/handlers"
 )
 
 func check(e error) {
@@ -14,7 +14,6 @@ func check(e error) {
 }
 
 func index(c *fiber.Ctx) error {
-	fmt.Println(products.CreateProduct)
 	return c.SendString("Hello from go server 2!")
 }
 
@@ -26,6 +25,8 @@ func main() {
 	app := fiber.New() 
 
 	app.Get("/", index) 
+
+	app.Post("/product", handlers.CreateProduct)
 
 	log.Fatal(app.Listen(port))
 }
