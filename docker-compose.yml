@@ -3,8 +3,6 @@ services:
   go:
     build: ./
     container_name: go
-    image: ubuntu:latest
-    working_dir: /usr/src/app
     volumes: 
-      - ./src:/usr/src/app
+      - .:/usr/src/app
     tty: true
